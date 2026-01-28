@@ -11,7 +11,7 @@ Will be doing the Advent of code challenges for 2025. This year will be doing th
 ## File Structure:
 Below is how the file structure for this project
 
-- adventofCode2025/
+-adventofCode2025/
 	-- master.py
 		--- Day1/
 			---- main.py
