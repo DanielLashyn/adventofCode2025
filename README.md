@@ -10,29 +10,20 @@ Will be doing the Advent of code challenges for 2025. This year will be doing th
 
 ## File Structure:
 Below is how the file structure for this project
-
--adventofCode2025/
-	-- master.py
-		--- Day1/
-			---- main.py
-			---- classes/
-				----- class1.py
-				----- class2.py
-				----- classx.py
-			---- data/
-				----- regularData.txt
-				----- advanceData.txt
-		--- Day2/
-
-                        ---- main.py
-                        ---- classes/
-                                ----- class1.py
-                                ----- class2.py
-                                ----- classx.py
-                        ---- data/
-                                ----- regularData.txt
-                                ----- advanceData.txt
-		--- DayX/
-
-`master.py` is the master script to run any of the main.py scripts.
-`main.py` is the pyton script to abtain obtain the solutions for that day.
+```text
+adventofCode2025/
+├── master.py
+│   ├── Day1/
+│   │   ├── main.py
+│   │   ├── classes/
+│   │   │   ├── class1.py
+│   │   │   ├── class2.py
+│   │   │   └── classx.py
+│   │   └── data/
+│   │       ├── regularData.txt
+│   │       └── advanceData.txt
+│   └── Day2/
+```
+- `master.py` is the master script to run any of the main.py scripts.
+- `main.py` is the pyton script to abtain obtain the solutions for that day.
+- Each day within the challenge will have its own directory 
