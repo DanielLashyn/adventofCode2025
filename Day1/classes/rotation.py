@@ -27,7 +27,7 @@ class rotation:
     # Set the distance that the dial needs to be moved
     # Input:
     #       - rotation Combo: Can either be a string with numbers in it or integer/float
-    # Output: If the input is valid then sets the distance to be that value, otherwise -1
+    # Output: If the input is valid then sets the distance to be that value, otherwise 0
     def setDistance(self, rotationCombo):
         
         if isinstance(rotationCombo, str):
@@ -43,7 +43,16 @@ class rotation:
             return
 
         # Gets here means the input wasn't valid
-            self.distance = -1
+            self.distance = 0
+
+
+
+    def getDirection(self):
+        return self.direction
+
+    def getDistance(self):
+        return self.distance
+
 
     def printValues(self):
         print("Direction: " + self.direction)
