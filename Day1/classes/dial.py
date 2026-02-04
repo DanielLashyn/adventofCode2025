@@ -48,4 +48,4 @@ class dial:
     # Print out the values for the user to see
     def printValues(self):
         print("Postion: " + str(self.postion))
-        print("Number of times past 0: " + str(self.timesOnZero))
+        print("Number of times on 0: " + str(self.timesOnZero))
