@@ -2,7 +2,7 @@ class rotation:
     def __init__(self, rotationCombo):
        
         self.setDirection(rotationCombo)
-        self.distance = 9
+        self.setDistance(rotationCombo)
 
     # Set the direction that the dial needs to be spinned
     # Input: 
@@ -24,6 +24,26 @@ class rotation:
 
         self.direction = ''
 
+    # Set the distance that the dial needs to be moved
+    # Input:
+    #       - rotation Combo: Can either be a string with numbers in it or integer/float
+    # Output: If the input is valid then sets the distance to be that value, otherwise -1
+    def setDistance(self, rotationCombo):
+        
+        if isinstance(rotationCombo, str):
+            self.distance = int(''.join(char for char in rotationCombo if char.isdigit()))
+            return
+
+        if isinstance(rotationCombo, int):
+            self.distance = rotationCombo
+            return
+
+        if isinstance(rotationCombo, float):
+            self.distance = int(rotationCombo)
+            return
+
+        # Gets here means the input wasn't valid
+            self.distance = -1
 
     def printValues(self):
         print("Direction: " + self.direction)
