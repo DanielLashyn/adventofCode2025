@@ -4,6 +4,7 @@ class dial:
     def __init__(self, selectStartPostion=50):
         self.setPostion(selectStartPostion)
         self.timesOnZero = 0
+        self.timesPastZero = 0
 
     # Sets the starting postion of the dial
     # Input:
@@ -26,22 +27,40 @@ class dial:
 
     def updatePostion(self, rotationValue):
         if not isinstance(rotationValue, rotation):
-            print("Error: RotatoinValue is not the correct class!")
+            print("Error: RotationValue is not the correct class!")
             return
 
         direction = rotationValue.getDirection()
         distance = rotationValue.getDistance()
 
+        timesPastZero = 0
         # Subtract to the postion
         if direction == 'L':
-            total = self.postion - distance
-        
+            
+            #total = self.postion - distance
+            
+            mod = distance % 100
+
+            timesPastZero = (distance // 100)
+            total = self.postion - mod
+            #timesPastZero = abs((-total + 99) // 100)
+            if total <= 0 and self.postion != 0:
+                timesPastZero += 1
+            
+
         # Adds to the postion
         if direction == 'R':
-            total = self.postion + distance
+            #total = self.postion + distance
+            timesPastZero = distance // 100
+            mod = distance % 100
+            total = self.postion + mod
+            if total >= 100:
+                timesPastZero += 1
 
         self.postion = abs(total % 100)
- 
+        self.timesPastZero += timesPastZero           
+   
+    # self.timesPastZero += timesPastZero
         if(self.postion == 0):
             self.timesOnZero += 1
 
@@ -49,3 +68,4 @@ class dial:
     def printValues(self):
         print("Postion: " + str(self.postion))
         print("Number of times on 0: " + str(self.timesOnZero))
+        print("Number of times past 0: " + str(self.timesPastZero))
