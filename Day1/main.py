@@ -20,8 +20,5 @@ for data in rawData:
 
 for rotationData in instructions:
     dial.updatePostion(rotationData)
-#    rotationData.printValues()
-    dial.printValues()
-#    input()
 
 dial.printValues()

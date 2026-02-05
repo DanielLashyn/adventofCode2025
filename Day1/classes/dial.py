@@ -37,30 +37,26 @@ class dial:
         # Subtract to the postion
         if direction == 'L':
             
-            #total = self.postion - distance
-            
-            mod = distance % 100
-
             timesPastZero = (distance // 100)
+            mod = distance % 100
             total = self.postion - mod
-            #timesPastZero = abs((-total + 99) // 100)
+            
             if total <= 0 and self.postion != 0:
                 timesPastZero += 1
             
 
         # Adds to the postion
         if direction == 'R':
-            #total = self.postion + distance
             timesPastZero = distance // 100
             mod = distance % 100
             total = self.postion + mod
+        
             if total >= 100:
                 timesPastZero += 1
 
         self.postion = abs(total % 100)
         self.timesPastZero += timesPastZero           
-   
-    # self.timesPastZero += timesPastZero
+
         if(self.postion == 0):
             self.timesOnZero += 1
 
