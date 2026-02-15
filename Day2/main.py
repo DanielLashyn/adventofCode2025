@@ -1,7 +1,7 @@
 from classes.ids import ids
 
 
-idtest = ids("50-10")
+idtest = ids("10-25")
 
 
 idtest.display()
