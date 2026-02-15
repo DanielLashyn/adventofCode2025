@@ -1,21 +1,29 @@
 class ids:
     def __init__(self, idRanges):
-        self.setStartid(idRanges)
+        self.setStartID(idRanges)
+        self.setEndID(idRanges)
 
-    def setStartid(self, passID):
+    def setStartID(self, passID):
+        self.startID = self.getValidID(passID)
+
+    def setEndID(self, passID):
+        self.endID = self.getValidID(passID)
+
+    def getValidID(self, passID):
 
         if isinstance(passID, str) and passID.isdigit():
-            self.startID = int(passID)
+            return int(passID)
 
         elif isinstance(passID, int):
-            self.startID = passID
+            return passID
 
         else:
             print("Error: Not valid start id")
-            self.startID = 0
+            return -1
 
 
 
     def display(self):
-        print("Starting ID: " + str(self.startID))
+        print("Start ID: " + str(self.startID))
+        print("End ID: "   + str(self.endID)  )
 
