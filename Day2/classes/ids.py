@@ -64,7 +64,7 @@ class ids:
     # Displays information about this class
     def display(self, displayIfNoIDs = True):
        
-        if not displayIfNoIDs and not self.hasInvValidIDs():
+        if not displayIfNoIDs and not self.hasInvalidIDs():
             return
 
         print("ID Range: " + str(self.startID)  + "-" + str(self.endID))
@@ -72,7 +72,7 @@ class ids:
         print("Sum of invalid IDs: "+ str(self.sumIDs()))
 
     def displayInvalidIDs(self):
-        if not self.hasValidIDs():
+        if not self.hasInvalidIDs():
             print("No invalid IDs")
         else:
             print("Invalid ID: " + str(self.invalidIDs) )
