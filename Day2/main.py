@@ -11,9 +11,7 @@ print("Using Data from " + data_file)
 with open(data_file, "r") as file:
     rawData = file.read().splitlines()
 
-for data in rawData:
-    idList.append(ids(data))
-
+idList = [ids(data) for data in rawData]
 total = sum(ids.sumIDs() for ids in idList)
 
-print(total)
+print("Total valid IDS: "+ str(total))
