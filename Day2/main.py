@@ -2,7 +2,7 @@ from classes.ids import ids
 
 
 idList = []
-data_file = "input_example.txt"
+data_file = "input_real.txt"
 
 print("Day 1:")
 print("Using Data from " + data_file)

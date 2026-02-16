@@ -2,7 +2,7 @@ class ids:
     def __init__(self, idRanges):
         # gets the range of the id 
         splitRanges = idRanges.split('-')
-        self.validIDs = []
+        self.invalidIDs = []
         self.IDsSum = 0
 
         # Check that only 2 ids are passed through
@@ -13,7 +13,7 @@ class ids:
         else:
             self.setStartID(splitRanges[0])
             self.setEndID(splitRanges[1])
-            self._setValidID()
+            self._setInvalidID()
 
     # Getters and setters for startID and endID
     def setStartID(self, passID):
@@ -28,9 +28,9 @@ class ids:
     def getEndID(self):
         return self.endID
 
-    def _setValidID(self):
+    def _setInvalidID(self):
         
-        self.validIDs = []
+        self.invalidIDs = []
         for curInt in range(self.startID, self.endID + 1):
             curStr = str(curInt)
             
@@ -43,7 +43,7 @@ class ids:
             endHalf = curStr[middle:]
         
             if startHalf == endHalf:
-                self.validIDs.append(curInt)
+                self.invalidIDs.append(curInt)
 
     # Checks that the values for startID and endID are valid
     def _getValidID(self, passID):
@@ -58,28 +58,28 @@ class ids:
             print("Error: Not valid ID")
             return -1
 
-    def hasValidIDs(self):
-        return len(self.validIDs) != 0
+    def hasInvalidIDs(self):
+        return len(self.invalidIDs) != 0
 
     # Displays information about this class
     def display(self, displayIfNoIDs = True):
        
-        if not displayIfNoIDs and not self.hasValidIDs():
+        if not displayIfNoIDs and not self.hasInvValidIDs():
             return
 
         print("ID Range: " + str(self.startID)  + "-" + str(self.endID))
-        self.displayValidIDs()
-        print("Sum of Valid IDs: "+ str(self.sumIDs()))
+        self.displayInvalidIDs()
+        print("Sum of invalid IDs: "+ str(self.sumIDs()))
 
-    def displayValidIDs(self):
+    def displayInvalidIDs(self):
         if not self.hasValidIDs():
-            print("No Valid IDs")
+            print("No invalid IDs")
         else:
-            print("Valid ID: " + str(self.validIDs) )
+            print("Invalid ID: " + str(self.invalidIDs) )
 
     def sumIDs(self):
-        if not self.hasValidIDs():
+        if not self.hasInvalidIDs():
             return 0
         else:
-            return sum(self.validIDs)
+            return sum(self.invalidIDs)
            
