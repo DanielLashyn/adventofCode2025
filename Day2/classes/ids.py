@@ -58,10 +58,22 @@ class ids:
             print("Error: Not valid ID")
             return -1
 
-
+    def hasValidIDs(self):
+        return len(self.validIDs) != 0
 
     # Displays information about this class
-    def display(self):
-        print("Start ID: " + str(self.startID)  )
-        print("End ID: "   + str(self.endID)    )
-        print("Valid ID: " + str(self.validIDs) )
+    def display(self, displayIfNoIDs = True):
+       
+        if not displayIfNoIDs and not self.hasValidIDs():
+            return
+
+        print("ID Range: " + str(self.startID)  + "-" + str(self.endID)    )
+        self.displayValidIDs()
+
+    def displayValidIDs(self):
+        if not self.hasValidIDs():
+            print("No Valid IDs")
+        else:
+            print("Valid ID: " + str(self.validIDs) )
+
+           
