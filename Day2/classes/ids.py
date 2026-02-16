@@ -67,8 +67,9 @@ class ids:
         if not displayIfNoIDs and not self.hasValidIDs():
             return
 
-        print("ID Range: " + str(self.startID)  + "-" + str(self.endID)    )
+        print("ID Range: " + str(self.startID)  + "-" + str(self.endID))
         self.displayValidIDs()
+        print("Sum of Valid IDs: "+ str(self.sumIDs()))
 
     def displayValidIDs(self):
         if not self.hasValidIDs():
@@ -76,4 +77,9 @@ class ids:
         else:
             print("Valid ID: " + str(self.validIDs) )
 
+    def sumIDs(self):
+        if not self.hasValidIDs():
+            return 0
+        else:
+            return sum(self.validIDs)
            
