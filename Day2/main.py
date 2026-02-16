@@ -1,9 +1,11 @@
 from pathlib import Path
-#from globalClasses.enums import Difficulty
+from globalClasses.enums import Difficulty
 from .classes.ids import ids
 from .classes.advanceIDs import advanceIDs
 
 def main():
+    selectDifficulty = Difficulty.ADVANCE
+
     idList = []
     fileData = "input_real.txt"
 
@@ -16,7 +18,9 @@ def main():
         rawData = file.readline().rstrip("\n")
         rawData = rawData.split(',')
 
-    idsConstruct = advanceIDs
+    # Sets the object type based on the puzzle difficulty
+    idsConstruct = ids if selectDifficulty == Difficulty.NORMAL else advanceIDs 
+
 
     idList = [idsConstruct(data) for data in rawData]
     total = sum(ids.sumIDs() for ids in idList)
