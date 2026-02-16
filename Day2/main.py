@@ -14,5 +14,6 @@ with open(data_file, "r") as file:
 for data in rawData:
     idList.append(ids(data))
 
-for ids in idList:
-    ids.display(False)
+total = sum(ids.sumIDs() for ids in idList)
+
+print(total)
