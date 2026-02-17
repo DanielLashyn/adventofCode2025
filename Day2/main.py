@@ -7,7 +7,7 @@ def main():
     selectDifficulty = Difficulty.ADVANCE
 
     idList = []
-    fileData = "input_real.txt"
+    fileData = "input_example.txt"
 
     print("Day 2:")
     print("Using Data from " + fileData)
