@@ -5,11 +5,11 @@ class advanceIDs(ids):
     def _setInvalidID(self):
         self.invalidIDs = set()
         startLength = len(str(self.startID))
-        endLength = len(str(self.startID))
+        endLength = len(str(self.endID))
        
         
         for curLength in range(1, endLength // 2 + 1):
-           
+            
             # Check if curLength is divisible within the range
             if ((startLength - endLength) < 2 and
                     startLength % curLength!= 0 and
@@ -17,7 +17,7 @@ class advanceIDs(ids):
                 continue
                       
             for curID in range(self.startID, self.endID + 1):
-    
+                #print(str(curID) + " length: " + str(curLength))    
                 if self._checkID(curID, curLength):
                     self.invalidIDs.add(curID)
 
