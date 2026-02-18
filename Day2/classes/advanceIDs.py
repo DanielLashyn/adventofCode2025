@@ -19,7 +19,7 @@ class advanceIDs(ids):
             
             for curID in range(self.startID, self.endID + 1):
     
-                self._checkID(123456, 2)
+                self._checkID(121212, 2)
                 self.invalidIDs.append(curID)
 
 
@@ -28,10 +28,18 @@ class advanceIDs(ids):
         strInID = str(inID)
         startSection = 0
         endSection = 0
-        for curSection in range(curLength-1, len(strInID)//curLength + 1):
+        matchSection = strInID[0:curLength]
+
+
+        for curSection in range(1, len(strInID)//curLength + 1):
             endSection += curLength
-            print(strInID[startSection:endSection])
+            slicedSection = strInID[startSection:endSection]
+            if slicedSection != matchSection:
+                return False
 
             startSection += curLength
-            
+
+
+        # Gets here means the ID matches
+        return True     
 
