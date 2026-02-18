@@ -18,4 +18,20 @@ class advanceIDs(ids):
             self.invalidIDs.append(curLength)
             
             for curID in range(self.startID, self.endID + 1):
+    
+                self._checkID(123456, 2)
                 self.invalidIDs.append(curID)
+
+
+    def _checkID(self, inID, curLength):
+       
+        strInID = str(inID)
+        startSection = 0
+        endSection = 0
+        for curSection in range(curLength-1, len(strInID)//curLength + 1):
+            endSection += curLength
+            print(strInID[startSection:endSection])
+
+            startSection += curLength
+            
+
