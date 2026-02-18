@@ -3,7 +3,7 @@ from .ids import ids
 class advanceIDs(ids):
 
     def _setInvalidID(self):
-        self.invalidIDs = []
+        self.invalidIDs = set()
         startLength = len(str(self.startID))
         endLength = len(str(self.startID))
        
@@ -19,7 +19,7 @@ class advanceIDs(ids):
             for curID in range(self.startID, self.endID + 1):
     
                 if self._checkID(curID, curLength):
-                    self.invalidIDs.append(curID)
+                    self.invalidIDs.add(curID)
 
 
     def _checkID(self, inID, curLength):

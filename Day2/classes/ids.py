@@ -2,7 +2,7 @@ class ids:
     def __init__(self, idRanges):
         # gets the range of the id 
         splitRanges = idRanges.split('-')
-        self.invalidIDs = []
+        self.invalidIDs = set() 
         self.IDsSum = 0
 
         # Check that only 2 ids are passed through
@@ -30,7 +30,7 @@ class ids:
 
     def _setInvalidID(self):
         
-        self.invalidIDs = []
+        self.invalidIDs = set()
         for curInt in range(self.startID, self.endID + 1):
             curStr = str(curInt)
             
@@ -43,7 +43,7 @@ class ids:
             endHalf = curStr[middle:]
         
             if startHalf == endHalf:
-                self.invalidIDs.append(curInt)
+                self.invalidIDs.add(curInt)
 
     # Checks that the values for startID and endID are valid
     def _getValidID(self, passID):
