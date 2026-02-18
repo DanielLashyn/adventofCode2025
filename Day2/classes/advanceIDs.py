@@ -6,7 +6,7 @@ class advanceIDs(ids):
         self.invalidIDs = []
         startLength = len(str(self.startID))
         endLength = len(str(self.startID))
-        self.invalidIDs.append(endLength)
+       
         
         for curLength in range(1, endLength // 2 + 1):
            
@@ -15,17 +15,21 @@ class advanceIDs(ids):
                     startLength % curLength!= 0 and
                     endLength % curLength != 0):
                 continue
-            self.invalidIDs.append(curLength)
-            
+                      
             for curID in range(self.startID, self.endID + 1):
     
-                self._checkID(121212, 2)
-                self.invalidIDs.append(curID)
+                if self._checkID(curID, curLength):
+                    self.invalidIDs.append(curID)
 
 
     def _checkID(self, inID, curLength):
        
         strInID = str(inID)
+        
+        # Checks that it's a valid
+        if (len(strInID) % curLength != 0):
+            return False
+
         startSection = 0
         endSection = 0
         matchSection = strInID[0:curLength]

@@ -25,7 +25,7 @@ def main():
     idList = [idsConstruct(data) for data in rawData]
     total = sum(ids.sumIDs() for ids in idList)
 
-    #[ids.display() for ids in idList]
+    [ids.display() for ids in idList]
 
     print("Total valid IDS: "+ str(total))
 
