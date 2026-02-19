@@ -1,5 +1,5 @@
 from pathlib import Path
-from globalClasses.enums import Difficulty
+from globalCode.enums import Difficulty
 from .classes.ids import ids
 from .classes.advanceIDs import advanceIDs
 
