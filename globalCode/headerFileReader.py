@@ -1,2 +1,2 @@
 from globalCode.interfaceFileReader import interfaceFileReader
-from globalCode.fileReaderOneLineOneList import fileReaderOneLineOneList
+from globalCode.fileReaderOneLine import fileReaderOneLine

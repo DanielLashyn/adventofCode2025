@@ -2,7 +2,7 @@
 from globalCode.classDayTemplate import DayTemplate
 from globalCode.headerFileReader import *
 
-test = DayTemplate(inputFileReader = fileReaderOneLineOneList())
+test = DayTemplate(inputFileReader = fileReaderOneLine())
 
 test.displayIntro()
 test.setData()

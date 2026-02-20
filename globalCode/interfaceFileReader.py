@@ -2,7 +2,7 @@
 class interfaceFileReader():
     
     def __init__(self):
-        print("Parent")
+        self.dataFile = ""
         self.data = []
         pass
 
@@ -11,3 +11,7 @@ class interfaceFileReader():
 
     def getData(self):
         return self.data
+
+    def displayData(self):
+        print("Data From: " + str(self.dataFile))
+        print("Data: \n" + str(self.data))
