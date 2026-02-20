@@ -1,24 +1,34 @@
-from classes.rotation import rotation
-from classes.dial import dial
+from globalCode.headerAll import *
+from .classes.rotation import rotation
+from .classes.dial import Dial
 
-data_file = "input_real.txt"
-print("Day 1:")
-print("Using Data from " + data_file)
+class Day1(DayTemplate):
 
-# Gets the raw data from the text file
-with open(data_file, "r") as file:
-    rawData = file.read().splitlines()
+    def __init__(self,
+                inputFileName = "input_real.txt",
+                inputDifficulty = Diff.NORMAL):
+        
 
+        super().__init__(inputDay = 1, 
+                    inputFileName = inputFileName,
+                    inputFileReader = fileReaderMultiLine(),
+                    inputDifficulty = inputDifficulty)
 
-instructions = []
-dial = dial()
-# Converts the raw data into the rotation class
-for data in rawData:
-    rotationData = rotation(data)
-    instructions.append(rotationData)
+    def run(self):
+        super().run()
 
+      
+        instructions = []
+        dial = Dial()
+        
+        rawData = self.getData()
 
-for rotationData in instructions:
-    dial.updatePostion(rotationData)
+        # Converts the raw data into the rotation class
+        for data in rawData:
+            rotationData = rotation(data)
+            instructions.append(rotationData)
 
-dial.printValues()
+        for rotationData in instructions:
+            dial.updatePostion(rotationData)
+
+        dial.printValues()

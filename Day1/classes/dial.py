@@ -1,6 +1,6 @@
-from classes.rotation import rotation
+from .rotation import rotation
 
-class dial:
+class Dial:
     def __init__(self, selectStartPostion=50):
         self.setPostion(selectStartPostion)
         self.timesOnZero = 0
