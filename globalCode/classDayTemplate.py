@@ -1,10 +1,12 @@
 from globalCode.enums import Difficulty as diff
+from globalCode.headerFileReader import *
 
 class DayTemplate():
 
     def __init__(self, 
                 inputDay = 0,
                 inputFileName = "input_real.txt", 
+                inputFileReader = interfaceFileReader(),
                 inputDifficulty = diff.NORMAL):
         
         self.difficulty = inputDifficulty
