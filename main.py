@@ -3,4 +3,8 @@ from globalCode.classDayTemplate import DayTemplate
 
 
 test = DayTemplate()
+
+test.displayIntro()
+test.setData()
+test.displayResult()
 #Day2()
