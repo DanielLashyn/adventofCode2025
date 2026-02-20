@@ -1,33 +1,34 @@
 from pathlib import Path
-from globalCode.enums import Difficulty
 from .classes.ids import ids
 from .classes.advanceIDs import advanceIDs
+from globalCode.headerAll import *
 
-def main():
-    selectDifficulty = Difficulty.ADVANCE
+class Day2(DayTemplate):
 
-    idList = []
-    fileData = "input_real.txt"
+    def __init__(self,
+                inputFileName = "input_real.txt",
+                inputDifficulty = Diff.NORMAL):
+        
 
-    print("Day 2:")
-    print("Using Data from " + fileData)
-    filePath = str(Path(__file__).resolve().parent) + "/" + fileData
+        super().__init__(inputDay = 2, 
+                    inputFileName = inputFileName,
+                    inputFileReader = fileReaderOneLine(),
+                    inputDifficulty = inputDifficulty)
 
-    # Gets the raw data from the text file
-    with open(filePath, "r") as file:
-        rawData = file.readline().rstrip("\n")
-        rawData = rawData.split(',')
+    def run(self):
+        super().run()
 
-    # Sets the object type based on the puzzle difficulty
-    idsConstruct = ids if selectDifficulty == Difficulty.NORMAL else advanceIDs 
+        rawData = self.getData()
+        idList = []
+    
+
+        # Sets the object type based on the puzzle difficulty
+        idsConstruct = ids if self.difficulty == Diff.NORMAL else advanceIDs 
 
 
-    idList = [idsConstruct(data) for data in rawData]
-    total = sum(ids.sumIDs() for ids in idList)
+        idList = [idsConstruct(data) for data in rawData]
+        total = sum(ids.sumIDs() for ids in idList)
 
     #[ids.display() for ids in idList]
 
-    print("Total valid IDS: "+ str(total))
-
-if __name__ == "__main__":
-    main()
+        print("Total valid IDS: "+ str(total))
