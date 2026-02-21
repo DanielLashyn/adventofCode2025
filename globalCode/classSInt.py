@@ -54,7 +54,7 @@ class SInt:
     # -------------------
 	def __len__(self):
 		return len(str(self.value))
-    
+
 	def isEmpty(self):
 		return len(str(self.value)) == 0
 

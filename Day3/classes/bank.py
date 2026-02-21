@@ -5,7 +5,7 @@ class Bank():
     def __init__(self, inBatteries = 0):
         self.setBank(inBatteries)
         self.maxVoltage = SInt(0)
-
+    
     # Checks that the Interger value given is a valid bank number
     def _validatedBank(self, inBatteries):
 
@@ -39,3 +39,28 @@ class Bank():
 
     def getMaxVoltage(self):
         return self.maxVoltage
+
+
+    def findMaxVoltage(self):
+        
+        if self.bank.isEmpty():
+            return
+
+        numOfBattery = len(self.bank)
+
+        potentialVoltage = SInt(10)
+        potentialVoltage[0] = self.bank[0]
+        for curBattery in range(1, numOfBattery):
+            voltage = self.bank[curBattery]
+            if voltage > potentialVoltage[0]:
+                if (numOfBattery - curBattery) > 1:
+                    potentialVoltage[0] = voltage
+                    potentialVoltage[1] = 0
+                else:
+                    potentialVoltage[1] = voltage
+            elif voltage > potentialVoltage[1]:
+                potentialVoltage[1] = voltage
+            print(potentialVoltage)
+           
+            
+

@@ -15,7 +15,8 @@ class Day3(DayTemplate):
 
     def run(self):
         #super().run()
-        test = Bank(2452532)
+        test = Bank(8765432111119)
+        print(test.findMaxVoltage())
         print(test.getMaxVoltage())
         #rawData = self.getData()
         pass
