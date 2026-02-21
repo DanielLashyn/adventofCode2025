@@ -1,4 +1,5 @@
 from globalCode.headerAll import *
+from .classes.bank import Bank
 
 class Day3(DayTemplate):
 
@@ -14,6 +15,6 @@ class Day3(DayTemplate):
 
     def run(self):
         #super().run()
-        
+        test = Bank(2452532)
         #rawData = self.getData()
         pass
