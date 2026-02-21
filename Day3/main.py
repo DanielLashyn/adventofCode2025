@@ -14,9 +14,17 @@ class Day3(DayTemplate):
                     inputDifficulty = inputDifficulty)
 
     def run(self):
-        #super().run()
-        test = Bank(8765432111119)
-        test.findMaxVoltage()
-        print(test.getMaxVoltage())
-        #rawData = self.getData()
-        pass
+        super().run()
+        
+        batteryBanks = []
+        self.result = 0
+        for data in self.getData():
+            batteryBanks.append(Bank(data))
+
+        for bank in batteryBanks:
+            bank.findMaxVoltage()
+            self.result = self.result + bank.getMaxVoltage()            
+
+
+        self.displayResult()
+
