@@ -24,13 +24,13 @@ class AdvanceBank(Bank):
             # Gets the current voltage
             voltage = self.bank[curBattery]
 
-            self._removeSmallVoltage(potentialVoltage, voltage, remainBatteries)
+            self._updatePotentVoltageSeq(potentialVoltage, voltage, remainBatteries)
             remainBatteries = remainBatteries - 1
 
         
         self.setMaxVoltage(potentialVoltage)   
        
-    def _removeSmallVoltage(self, potentialVoltage, voltage, spotsRemaing):
+    def _updatePotentVoltageSeq(self, potentialVoltage, voltage, spotsRemaing):
        
         # Adds battery if it's the only one
         if potentialVoltage.isEmpty():
@@ -43,7 +43,7 @@ class AdvanceBank(Bank):
         # Checks if the voltage is greater then the last stored battery
         elif potentialVoltage[-1] < voltage:
             potentialVoltage.pop()
-            self._removeSmallVoltage(potentialVoltage, voltage, spotsRemaing)
+            self._updatePotentVoltageSeq(potentialVoltage, voltage, spotsRemaing)
 
         # Adds the battery if the are not all ready 12 batteries
         elif len(potentialVoltage) < self.voltageMaxLength:
