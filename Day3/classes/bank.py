@@ -50,6 +50,7 @@ class Bank():
 
         potentialVoltage = SInt(10)
         potentialVoltage[0] = self.bank[0]
+        
         for curBattery in range(1, numOfBattery):
             voltage = self.bank[curBattery]
             if voltage > potentialVoltage[0]:
@@ -60,7 +61,7 @@ class Bank():
                     potentialVoltage[1] = voltage
             elif voltage > potentialVoltage[1]:
                 potentialVoltage[1] = voltage
-            print(potentialVoltage)
-           
+        
+        self.setMaxVoltage(potentialVoltage)   
             
 
