@@ -49,6 +49,15 @@ class SInt:
 			return other
 		return NotImplemented
 
+    # -------------------
+    # Other
+    # -------------------
+	def __len__(self):
+		return len(str(self.value))
+    
+	def isEmpty(self):
+		return len(str(self.value)) == 0
+
 	# -------------------
 	# Arithmetic
 	# -------------------
