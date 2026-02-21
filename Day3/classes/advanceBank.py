@@ -3,6 +3,9 @@ from globalCode.classSInt import SInt
 
 class AdvanceBank(Bank):
 
+    def __init__(self, childInBatteries = 0):
+        self.voltageMaxLength = 12
+        super().__init__(inBatteries = childInBatteries)
 
     def findMaxVoltage(self):
         
@@ -13,49 +16,37 @@ class AdvanceBank(Bank):
         remainBatteries = numOfBattery - 1
 
         # Sets the first number, as it will always be greater then nothing :-)
-        potentialVoltage = SInt(0)
-        potentialVoltage[0] = self.bank[0]
+        potentialVoltage = SInt(self.bank[0])
         
         # Searches through all the batteries in the bank
         for curBattery in range(1, numOfBattery):
             
             # Gets the current voltage
             voltage = self.bank[curBattery]
-            #If remaing length = spots avilbabe:
-                #then append
-            #else:
+
             self._removeSmallVoltage(potentialVoltage, voltage, remainBatteries)
             remainBatteries = remainBatteries - 1
 
-
-#Check if the voltage is greater then voltage last in digit:
-                # True: set that current Voltage to 0 and check next digit
-                # False: If there is a spot then add that digit to the last avilable digit otherwise ignore it
-            '''if voltage > potentialVoltage[0]:
-                if (numOfBattery - curBattery) > 1:
-                    potentialVoltage[0] = voltage
-                    potentialVoltage[1] = 0
-                else:
-                    potentialVoltage[1] = voltage
-            elif voltage > potentialVoltage[1]:
-                potentialVoltage[1] = voltage
-        '''
-        print(potentialVoltage)
+        
         self.setMaxVoltage(potentialVoltage)   
        
     def _removeSmallVoltage(self, potentialVoltage, voltage, spotsRemaing):
        
-        
+        # Adds battery if it's the only one
         if potentialVoltage.isEmpty():
             potentialVoltage.append(voltage)
-        elif (len(potentialVoltage) + spotsRemaing <= 12):
+        
+        # Adds battery if near the end and don't have the required number of batteries
+        elif (len(potentialVoltage) + spotsRemaing <= self.voltageMaxLength):
             potentialVoltage.append(voltage)
 
+        # Checks if the voltage is greater then the last stored battery
         elif potentialVoltage[-1] < voltage:
             potentialVoltage.pop()
             self._removeSmallVoltage(potentialVoltage, voltage, spotsRemaing)
 
-        elif len(potentialVoltage) < 12:
+        # Adds the battery if the are not all ready 12 batteries
+        elif len(potentialVoltage) < self.voltageMaxLength:
             potentialVoltage.append(voltage)
 
         return potentialVoltage
