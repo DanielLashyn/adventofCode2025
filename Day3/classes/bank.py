@@ -1,8 +1,14 @@
+from globalCode.classSInt import SInt
+
 class Bank():
 
     def __init__(self, inBatteries = 0):
         self.setBank(inBatteries)
         print(type(self.bank))
+        print(self.bank)
+        print(self.bank[0:3])
+        self.bank[2:] = 9
+
         print(self.bank)
 
     # Checks that the Interger value given is a valid bank number
@@ -22,6 +28,6 @@ class Bank():
 
     def setBank(self, inBatteries):
         intBank = self._validatedBank(inBatteries)
-        self.bank = intBank
+        self.bank = SInt(intBank)
 
 
