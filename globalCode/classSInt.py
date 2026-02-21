@@ -72,7 +72,7 @@ class SInt:
 		return len(str(self.value))
 
 	def isEmpty(self):
-		return len(str(self.value)) == 0
+		return str(self.value) == "0"
 
 	# -------------------
 	# List-style methods
