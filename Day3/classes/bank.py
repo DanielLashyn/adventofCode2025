@@ -1,7 +1,9 @@
 class Bank():
 
     def __init__(self, inBatteries = 0):
-        print(self._validatedBank(inBatteries))
+        self.setBank(inBatteries)
+        print(type(self.bank))
+        print(self.bank)
 
     # Checks that the Interger value given is a valid bank number
     def _validatedBank(self, inBatteries):
@@ -17,3 +19,9 @@ class Bank():
             return 0
 
         return intBatteries
+
+    def setBank(self, inBatteries):
+        intBank = self._validatedBank(inBatteries)
+        self.bank = intBank
+
+
