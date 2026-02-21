@@ -1,5 +1,6 @@
 from globalCode.headerAll import *
 from .classes.bank import Bank
+from .classes.advanceBank import AdvanceBank as advBank
 
 class Day3(DayTemplate):
 
@@ -18,8 +19,11 @@ class Day3(DayTemplate):
         
         batteryBanks = []
         self.result = 0
+        
+        bankConstruct = Bank if self.difficulty == Diff.NORMAL else advBank 
+
         for data in self.getData():
-            batteryBanks.append(Bank(data))
+            batteryBanks.append(bankConstruct(data))
 
         for bank in batteryBanks:
             bank.findMaxVoltage()
