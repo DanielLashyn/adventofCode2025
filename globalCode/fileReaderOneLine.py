@@ -14,8 +14,11 @@ class fileReaderOneLine(parent):
 
         self.dataFile = filePath
         # Gets the raw data from the text file
-        with open(filePath, "r") as file:
-            rawData = file.readline().rstrip("\n")
-            rawData = rawData.split(delimiter)
+        try:
+           with open(filePath, "r") as file:
+                rawData = file.readline().rstrip("\n")
+                rawData = rawData.split(delimiter)
+        except FileNotFoundError:
+            rawData = "Error: Unable to find file at " + str(filePath)
         self.data = rawData
     
