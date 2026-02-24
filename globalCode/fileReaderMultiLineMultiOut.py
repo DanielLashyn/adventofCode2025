@@ -3,12 +3,11 @@ from globalCode.interfaceFileReader import interfaceFileReader as parent
 
 class fileReaderMultiLineMultiOut(parent):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, delimiter = None):
+        super().__init__(delimiter = delimiter)
 
 
-    def setData(self,filePath="NONE", delimiter = ','):
-        
+    def setData(self,filePath="NONE"):
         rawData = []
         if(filePath == "NONE"):
             return
@@ -16,7 +15,12 @@ class fileReaderMultiLineMultiOut(parent):
             with open(filePath, "r") as file:
                 for line in file:
                     row = line.strip()
-                    row = list(row)
+                    
+                    if self.delimiter == None:
+                        row = list(row)
+                    else:     
+                        row = row.split(self.delimiter) 
+
                     rawData.append(row)
         except FileNotFoundError:
             rawData = "Error: Unable to find file at " + str(filePath)

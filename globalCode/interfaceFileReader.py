@@ -1,9 +1,10 @@
 # This is the parentClass for all the DataLoader classes to use
 class interfaceFileReader():
     
-    def __init__(self):
+    def __init__(self, delimiter = None):
         self.dataFile = ""
         self.data = []
+        self.delimiter = delimiter
         pass
 
     def setData(self):
