@@ -7,7 +7,7 @@ class fileReaderMultiLine(parent):
         super().__init__()
 
 
-    def setData(self,filePath="NONE", delimiter = ','):
+    def setData(self,filePath="NONE"):
         
         if(filePath == "NONE"):
             return

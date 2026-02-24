@@ -11,7 +11,7 @@ class Day2(DayTemplate):
 
         super().__init__(inputDay = 2, 
                     inputFileName = inputFileName,
-                    inputFileReader = fileReaderOneLine(),
+                    inputFileReader = fileReaderOneLine(delimiter = ','),
                     inputDifficulty = inputDifficulty)
 
     def run(self):
