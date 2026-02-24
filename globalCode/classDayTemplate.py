@@ -39,7 +39,7 @@ class DayTemplate():
 
     def displayData(self):
         print("Displaying Data From: " + str(self.fileName))
-        print(str(self.getData()))
+        self.fileReader.displayData()
 
     def displayResult(self):
         print("Result: " + str(self.result))

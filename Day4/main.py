@@ -9,12 +9,12 @@ class Day4(DayTemplate):
 
         super().__init__(inputDay = 4, 
                     inputFileName = inputFileName,
-                    inputFileReader = fileReaderMultiLine(),
+                    inputFileReader = fileReaderMultiLineMultiOut(),
                     inputDifficulty = inputDifficulty)
 
     def run(self):
         super().run()
-        
+        self.displayData() 
        
         self.displayResult()
 

@@ -1,6 +1,6 @@
 from globalCode.interfaceFileReader import interfaceFileReader
 from globalCode.fileReaderOneLine import fileReaderOneLine
 from globalCode.fileReaderMultiLine import fileReaderMultiLine
-
+from globalCode.fileReaderMultiLineMultiOut import fileReaderMultiLineMultiOut
 
 
