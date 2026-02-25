@@ -46,15 +46,18 @@ class GridMap:
             print("There is no Grid Map to display!")
             return
 
+        self._displayGridMap(self.gridData)
+
+    def _displayGridMap(self, gridData, rowOffSet = 0, columnOffSet = 0):
         # Prints the column header
         columnHeaderString = "  "
-        for columnHead in range(0, self.column):
+        for columnHead in range(columnOffSet, len(gridData[0]) + columnOffSet):
             columnHeaderString += " " + str(columnHead)
         print(columnHeaderString)
-        print("  "+ (self.column * " _"))
+        print("  "+ (len(gridData[0]) * " _"))
 
-        for rowCount, rowData in enumerate(self.gridData):
-            print(str(rowCount) + "|" , end = "")
+        for rowCount, rowData in enumerate(gridData):
+            print(str(rowCount + rowOffSet) + "|" , end = "")
             
             for data in rowData:
                 print(" "+ str(data), end = "")
@@ -67,10 +70,16 @@ class GridMap:
         if not self._isValidRange(rowRange, self.row):
            #not self._isValidRange(columnRange, self.column):
             print("Unable to Display!")
-            return
+            return 
 
-        data = self.gridData[columnRange[0]:columnRange[1]][rowRange[0]:rowRange[1]])
+        # Gets the Data
+        gridData = [row[columnRange[0]:columnRange[1] + 1] for row in 
+                self.gridData[rowRange[0]:rowRange[1] + 1]]
         
+        # Displays the grid
+        self._displayGridMap(gridData, 
+                rowOffSet = rowRange[0], 
+                columnOffSet = columnRange[0])
     def _isValidRange(self, inRange, maxRange):
         
         if not isinstance(inRange, tuple):

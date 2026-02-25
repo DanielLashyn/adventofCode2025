@@ -17,6 +17,7 @@ class Day4(DayTemplate):
         testGridData = self.getData()
         testGridMap = GridMap(testGridData)
         testGridMap.display()
+        testGridMap.displaySection((7, 9),(0,2))
         #self.displayData() 
        
         #self.displayResult()
