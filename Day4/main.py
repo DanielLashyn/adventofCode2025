@@ -1,5 +1,5 @@
 from globalCode.headerAll import *
-
+from globalCode.classGridMap import *
 class Day4(DayTemplate):
 
     def __init__(self,
@@ -14,7 +14,10 @@ class Day4(DayTemplate):
 
     def run(self):
         super().run()
-        self.displayData() 
+        testGridData = self.getData()
+        testGridMap = GridMap(testGridData)
+        testGridMap.display()
+        #self.displayData() 
        
-        self.displayResult()
+        #self.displayResult()
 

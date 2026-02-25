@@ -1,17 +1,18 @@
 class GridMap:
     def __init__(self, gridData):
-        self.setGridMap(gridData)
+        self.setGridData(gridData)
 
-    def setGridMap(self, gridData):
+    def setGridData(self, gridData):
         
-        if not self._isValidGridMap(gridData):
+        if not self._isValidGridData(gridData):
+            print("GridMap Error: Unable to set gridData")
             return False
         
-        self.GridData = gridData
+        self.gridData = gridData
         self.row = len(gridData[0])
         self.column = len(gridData)
     
-    def _isValidGridMap(self, gridData):
+    def _isValidGridData(self, gridData):
        
         # Checks that gridData has data        
         if not gridData:
@@ -33,6 +34,30 @@ class GridMap:
                 return False
 
         return True
+
+    def display(self):
+        
+        if not self.gridData:
+            print("There is no Grid Mao to display!")
+            return
+
+        # Prints the column header
+        columnHeaderString = "  "
+        for columnHead in range(0, self.column):
+            columnHeaderString += " " + str(columnHead)
+        print(columnHeaderString)
+        print("  "+ (self.column * " _"))
+
+        for rowCount, rowData in enumerate(self.gridData):
+            print(str(rowCount) + "|" , end = "")
+            
+            for data in rowData:
+                print(" "+ str(data), end = "")
+
+
+            print()
+
+
 
 
 
