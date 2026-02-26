@@ -40,6 +40,52 @@ class GridMap:
 
         return True
 
+    """
+        Inputs:
+            - centerCords: Tuple (x,y) cords of where the center of the section is
+            - wantedChar: Character that is beingCounted in the section
+            - sectoinRange: 
+    """
+    def countCharInSection(self, centerCords = (0,0), 
+            wantedChar = ',', 
+            distanceFromCenter = 1):
+
+        if not isinstance(centerCords,tuple) or len(centerCords) != 2:
+            print("GridMap Error: Not valid cords!")
+            return
+        
+        xCord = centerCords[0]
+        yCord = centerCords[1]
+        
+        if not isinstance(xCord, int) or xCord < 0 or xCord > self.column:
+            print("GridMap Error: Not Valid X cord!")
+            return
+
+        if not isinstance(yCord, int) or yCord < 0 or yCord > self.row:
+            print("GridMap Error: Not Valid y cord!")
+            return
+
+        if not isinstance(wantedChar, str):
+            print("GridMap Error: Lookup value must be string!")
+            return
+
+        if distanceFromCenter <= 0:
+            print("GridMap Error: Distance Must be greater then 0!")
+            return 0
+
+        counter = 0
+        for rowLocation in range (yCord - distanceFromCenter, yCord + distanceFromCenter + 1):
+            rowData = self.gridData[rowLocation]
+            for columnLocation in range(xCord - distanceFromCenter, xCord + distanceFromCenter + 1):
+                data = rowData[columnLocation]
+                 
+                if str(data) == wantedChar:
+                    counter += 1
+
+
+        print(counter)
+        return counter
+
     def display(self):
         
         if not self.gridData:
@@ -98,9 +144,9 @@ class GridMap:
             print("GridMap Error: is not a valid range")
             return False
 
-        #if not all(inRange[0] > inRange[1]):
-            #print("GridMap Error: is not a valid range")
-            #return False
+        if inRange[0] > inRange[1]:
+            print("GridMap Error: is not a valid range")
+            return False
 
 
         return True
