@@ -18,7 +18,7 @@ class Day4(DayTemplate):
         testGridMap = GridMap(testGridData)
         testGridMap.display()
         testGridMap.displaySection((1,3), (1,3))
-        testGridMap.countCharInSection((4,4), 
+        testGridMap.countCharInSection((6,0), 
             wantedChar = '@', 
             distanceFromCenter = 1)
 

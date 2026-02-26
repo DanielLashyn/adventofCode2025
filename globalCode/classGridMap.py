@@ -75,10 +75,26 @@ class GridMap:
 
         counter = 0
         for rowLocation in range (yCord - distanceFromCenter, yCord + distanceFromCenter + 1):
+            if rowLocation >= self.row:
+                break
+
+            if rowLocation < 0:
+                rowLocation = 0
+                continue
+
             rowData = self.gridData[rowLocation]
             for columnLocation in range(xCord - distanceFromCenter, xCord + distanceFromCenter + 1):
+                
+                if columnLocation >= self.column:
+                    break
+                
+                if columnLocation < 0:
+                    columnLocation
+                    continue
+
                 data = rowData[columnLocation]
                  
+                
                 if str(data) == wantedChar:
                     counter += 1
 
