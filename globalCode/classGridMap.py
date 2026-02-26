@@ -41,10 +41,14 @@ class GridMap:
         return True
 
     """
+        Description: Counts the number of times a character appers in a section of the grid
         Inputs:
             - centerCords: Tuple (x,y) cords of where the center of the section is
             - wantedChar: Character that is beingCounted in the section
-            - sectoinRange: 
+            - distanceFromCenter: How far from the center to make the section 
+        Output:
+            - returns the number of times the character appeared
+
     """
     def countCharInSection(self, centerCords = (0,0), 
             wantedChar = ',', 
@@ -74,7 +78,11 @@ class GridMap:
             return 0
 
         counter = 0
+
+        # Looks through all the rows and columns in the section
         for rowLocation in range (yCord - distanceFromCenter, yCord + distanceFromCenter + 1):
+            
+            # Checks that the row location is not outside
             if rowLocation >= self.row:
                 break
 
@@ -83,8 +91,11 @@ class GridMap:
                 continue
 
             rowData = self.gridData[rowLocation]
+            
+            # Looks through all the columns for that row
             for columnLocation in range(xCord - distanceFromCenter, xCord + distanceFromCenter + 1):
                 
+                # Checks that the column location is not outside
                 if columnLocation >= self.column:
                     break
                 
@@ -94,7 +105,8 @@ class GridMap:
 
                 data = rowData[columnLocation]
                  
-                
+               
+                # If data matchs the wanted char then added one
                 if str(data) == wantedChar:
                     counter += 1
 
