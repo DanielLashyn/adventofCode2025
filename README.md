@@ -4,7 +4,7 @@ Will be doing the Advent of code challenges for 2025. This year will be doing th
 
 1) The data from the questions must be contained in a custom class. 
 2) Each question must have atleast one custom class script
-3) Each class must be contained within it's '.py' file (ie class santa and elvesmust be in santa.py and elves.py respectively)
+3) Each class must be contained within it's '.py' file (ie class santa and elves must be in santa.py and elves.py respectively)
 4) The main.py script must be able to handle the regular and advance versions of the questions.
 
 
@@ -24,6 +24,6 @@ adventofCode2025/
 │   │       └── advanceData.txt
 │   └── Day2/
 ```
-- `master.py` is the master script to run any of the main.py scripts.
-- `main.py` is the pyton script to abtain obtain the solutions for that day.
-- Each day within the challenge will have its own directory 
+- `master.py` is the master script to run any of the `main.py` scripts.
+- `main.py` is the pyton script to obtain the solutions for that day.
+- Each day within the challenge will have its own directory.
