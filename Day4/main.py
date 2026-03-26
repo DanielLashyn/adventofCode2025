@@ -1,5 +1,6 @@
 from globalCode.headerAll import *
 from globalCode.classGridMap import *
+from .classes.forkliftDiagram import *
 class Day4(DayTemplate):
 
     def __init__(self,
@@ -15,7 +16,7 @@ class Day4(DayTemplate):
     def run(self):
         super().run()
         testGridData = self.getData()
-        testGridMap = GridMap(testGridData)
+        testGridMap = forkliftDiagram(testGridData)
         testGridMap.display()
         testGridMap.displaySection((1,3), (1,3))
         testGridMap.countCharInSection((6,0), 
