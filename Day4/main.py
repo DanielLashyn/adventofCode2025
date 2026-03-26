@@ -16,13 +16,14 @@ class Day4(DayTemplate):
     def run(self):
         super().run()
         testGridData = self.getData()
+        print(testGridData)
         testGridMap = forkliftDiagram(testGridData)
         testGridMap.display()
         testGridMap.displaySection((1,3), (1,3))
         testGridMap.countCharInSection((6,0), 
             wantedChar = '@', 
             distanceFromCenter = 1)
-
+        testGridMap.getAccessableRolls()
 
         #self.displayData() 
        

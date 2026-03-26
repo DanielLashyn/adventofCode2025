@@ -73,7 +73,7 @@ class GridMap:
             print("GridMap Error: Lookup value must be string!")
             return
 
-        if distanceFromCenter <= 0:
+        if distanceFromCenter < 0:
             print("GridMap Error: Distance Must be greater then 0!")
             return 0
 
@@ -104,14 +104,12 @@ class GridMap:
                     continue
 
                 data = rowData[columnLocation]
-                 
+                               
                
                 # If data matchs the wanted char then added one
                 if str(data) == wantedChar:
                     counter += 1
 
-
-        print(counter)
         return counter
 
     def display(self):
@@ -178,6 +176,5 @@ class GridMap:
 
 
         return True
-
 
 
