@@ -25,7 +25,7 @@ class forkliftDiagram(GridMap):
                 isRoll = 0
                 counter = 0
                 
-        print(accessableRolls)
+        return accessableRolls
 
 
 
