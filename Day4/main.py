@@ -16,6 +16,11 @@ class Day4(DayTemplate):
     def run(self):
         super().run()
         gridMap = forkliftDiagram(self.getData())
-        self.result = gridMap.getAccessableRolls()
+        self.result = 0
+        oldresult = - 1
+        while oldresult != self.result:
+            oldresult = self.result
+            self.result = self.result + gridMap.getAccessableRolls(replace = True)        
+        gridMap.display()
         self.displayResult()
 

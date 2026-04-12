@@ -5,7 +5,7 @@ class forkliftDiagram(GridMap):
     def __init__(self, gridData):
         super().__init__(gridData = gridData)
 
-    def getAccessableRolls(self):
+    def getAccessableRolls(self, replace = False):
         accessableRolls = 0
         isRoll = 0
         counter = 0
@@ -22,6 +22,10 @@ class forkliftDiagram(GridMap):
                 
                     if counter <= 4:
                         accessableRolls += 1
+
+                        if replace:
+                           self.updateMapValue((x,y), "x")
+
                 isRoll = 0
                 counter = 0
                 

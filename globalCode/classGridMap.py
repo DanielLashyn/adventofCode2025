@@ -152,6 +152,26 @@ class GridMap:
         self._displayGridMap(gridData, 
                 rowOffSet = rowRange[0], 
                 columnOffSet = columnRange[0])
+
+    def updateMapValue(self, inRange, value):
+       
+        # Do values check here
+        print(inRange)
+ 
+        xCord = inRange[0]
+        yCord = inRange[1]
+        if not isinstance(xCord, int) or xCord < 0 or xCord > self.column:
+            print("GridMap Error: Not Valid X cord!")
+            return
+
+        if not isinstance(yCord, int) or yCord < 0 or yCord > self.row:
+            print("GridMap Error: Not Valid y cord!")
+            return       
+
+        self.gridData[yCord][xCord] = value
+
+        
+
     def _isValidRange(self, inRange, maxRange):
         
         if not isinstance(inRange, tuple):
@@ -173,7 +193,6 @@ class GridMap:
         if inRange[0] > inRange[1]:
             print("GridMap Error: is not a valid range")
             return False
-
 
         return True
 
