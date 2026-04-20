@@ -35,9 +35,19 @@ class rangeList(GridMap):
         return selRange[0]
 
 
-    # Adds
+    # If new range is valid then will add to list.
+    # Will merge ranges that overlap with the new range
     def addRange(self, newRange):
-        print("Stub")
+        
+        endIndex = self.getLength()
+        startIndex = 0
+
+        if not self._validRange(newRange):
+            return False
+
+        # TODO Add Binary list search here
+
+        
 
 
     # Checks that the passed index is valid within the list of ranges
