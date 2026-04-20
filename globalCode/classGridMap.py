@@ -156,7 +156,7 @@ class GridMap:
     def updateMapValue(self, inRange, value):
        
         # Do values check here
-        print(inRange)
+
  
         xCord = inRange[0]
         yCord = inRange[1]

@@ -18,9 +18,16 @@ class Day4(DayTemplate):
         gridMap = forkliftDiagram(self.getData())
         self.result = 0
         oldresult = - 1
+
+       
         while oldresult != self.result:
             oldresult = self.result
-            self.result = self.result + gridMap.getAccessableRolls(replace = True)        
-        gridMap.display()
+            
+            if self.difficulty == Diff.NORMAL:
+                self.result = gridMap.getAccessableRolls(replace = False)
+            elif self.difficulty == Diff.ADVANCE:
+                self.result = self.result + gridMap.getAccessableRolls(replace = True)        
+            
+
         self.displayResult()
 
