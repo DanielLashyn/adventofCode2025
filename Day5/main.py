@@ -1,4 +1,5 @@
 from globalCode.headerAll import *
+from .classes.rangeList import *
 
 class Day5(DayTemplate):
 
@@ -14,8 +15,12 @@ class Day5(DayTemplate):
 
     def run(self):
         super().run()
+        ingredientIDRanges = rangeList()
 
-
+        # TODO 
+        # - Seperate the IDS and the ingredientIDRanges
+        # - Add the Data to the ingredientIDRanges
+        # - Loop through checking how many IDs are valid
         self.result = 0            
 
         self.displayResult()

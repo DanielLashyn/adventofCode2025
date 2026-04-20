@@ -1,26 +1,25 @@
-
-
-class rangeList(GridMap):
+class rangeList():
     
     # Assume ranges in the index are greater then or equal to 0
     def __init__(self):
-        binaryList = []
+        self.binaryList = []
+    
 
     # Returns True if the list is empty, otherwise False
     def isEmpty(self):
-        if self.getLength() = -1:
+        if self.getLength() == -1:
             return True
         return False
 
     # Gets the list length
     def getLength(self):
-        return len(binaryList) - 1
+        return len(self.binaryList) - 1
 
     # Gets the ranges at the selected index
     def getRangeAtIndex(self, index):
        if not self._validIndex(self, index):
            return (-1, -1)
-       return binaryList[index]
+       return self.binaryList[index]
 
     # Gets the max Range at the selected index
     def getMaxAtIndex(self, index):
@@ -95,7 +94,7 @@ class rangeList(GridMap):
         if not self._validIndex(insertIndex):
             return False
 
-        binaryList.insert(insertIndex, newRange)
+        self.binaryList.insert(insertIndex, newRange)
         return True
 
 
@@ -107,10 +106,11 @@ class rangeList(GridMap):
         if not self._validIndex(popIndex):
             return False
 
-        binaryList.pop(popIndex)
+        self.binaryList.pop(popIndex)
         return True
 
-
+    def display(self):
+        print(self.binaryList)
 
 
 
