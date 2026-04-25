@@ -18,6 +18,7 @@ class Day5(DayTemplate):
         ingredientIDRanges = rangeList()
 
         isIngredient = False
+        self.result = 0
         for item in self.getData():
             
             # Checks if the list is switching from ranges to ingredient
@@ -26,20 +27,20 @@ class Day5(DayTemplate):
                 continue
 
             if (isIngredient):
-                test = ""
+                if (ingredientIDRanges.itemInRange(item)):
+                    self.result = self.result + 1
                 #print("Ingredient: "+ str(item))
 
             else:
                 ingredientIDRanges.addRange(item)
        
 
-        ingredientIDRanges.display()
+        #ingredientIDRanges.display()
 
         # TODO 
         # - Seperate the IDS and the ingredientIDRanges
         # - Add the Data to the ingredientIDRanges
         # - Loop through checking how many IDs are valid
-        self.result = 0            
 
         self.displayResult()
 

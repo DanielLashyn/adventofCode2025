@@ -145,6 +145,8 @@ class rangeList():
 
         else:
             print("List is unordered")
+   
+    # Method to test that the list is ordered
     def verifyOrder(self):
 
         lowestValue = self.binaryList[0][0] - 1
@@ -216,4 +218,18 @@ class rangeList():
                     didMerge = True
 
         return didMerge
- 
+
+    def itemInRange(self, item):
+
+        item = int(item)
+        for curRange in self.binaryList:
+            # Checks that the lowest value is not greater then the min of current range    
+            if item >= curRange[0] and item <= curRange[1]:
+                return True
+            
+            # Checks that the min is not greater then the max of the current range
+            if(item < curRange[0]):
+                return False
+
+            # Sets the lowest value to the max of the range
+    
