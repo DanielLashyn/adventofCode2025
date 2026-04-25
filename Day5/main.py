@@ -10,12 +10,29 @@ class Day5(DayTemplate):
 
         super().__init__(inputDay = 5, 
                     inputFileName = inputFileName,
-                    inputFileReader = fileReaderMultiLineMultiOut(),
+                    inputFileReader = fileReaderMultiLine(),
                     inputDifficulty = inputDifficulty)
 
     def run(self):
         super().run()
         ingredientIDRanges = rangeList()
+
+        isIngredient = False
+        for item in self.getData():
+            
+            # Checks if the list is switching from ranges to ingredient
+            if (item == ""):
+                isIngredient = True
+                continue
+
+            if (isIngredient):
+                print("Ingredient: "+ str(item))
+
+            else:
+                ingredientIDRanges.addRange(item)
+       
+
+        ingredientIDRanges.display()
 
         # TODO 
         # - Seperate the IDS and the ingredientIDRanges

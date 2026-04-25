@@ -7,13 +7,13 @@ class rangeList():
 
     # Returns True if the list is empty, otherwise False
     def isEmpty(self):
-        if self.getLength() == -1:
+        if self.getLength() == 0:
             return True
         return False
 
     # Gets the list length
     def getLength(self):
-        return len(self.binaryList) - 1
+        return len(self.binaryList)
 
     # Gets the ranges at the selected index
     def getRangeAtIndex(self, index):
@@ -37,7 +37,8 @@ class rangeList():
     # If new range is valid then will add to list.
     # Will merge ranges that overlap with the new range
     def addRange(self, newRange):
-        
+       
+        newRange = self.convertStringToRange(newRange)
         endIndex = self.getLength()
         startIndex = 0
 
@@ -46,19 +47,25 @@ class rangeList():
 
         # TODO Add Binary list search here
 
-        
+        self._insertRange(0, newRange)
 
 
     # Checks that the passed index is valid within the list of ranges
     def _validIndex(self, index):
-        
-        if self.isEmpty():
-            return False
+            
+        # Special condition for empty list
+        if self.isEmpty() and index == 0:
+            return True
+
+        # checks that the index is not greater then the length
         if self.getLength() < index:
+            
             return False
+        # Checks that index is not less then 0
         if index < 0:
             return False
-
+        
+        return True
     # Return True if the range is valid, else False
     def _validRange(self, inRange):
 
@@ -85,15 +92,15 @@ class rangeList():
     # Method to insert a new range at an index
     # Returns True if able to insert at the index, otherwise False
     def _insertRange(self, insertIndex, newRange):
-
+          
         # Checks that range is valid
         if not self._validRange(newRange):
             return False
-
+           
         # Checks that the index is valid
         if not self._validIndex(insertIndex):
             return False
-
+        
         self.binaryList.insert(insertIndex, newRange)
         return True
 
@@ -112,5 +119,12 @@ class rangeList():
     def display(self):
         print(self.binaryList)
 
+    def convertStringToRange(self, strRange):
+        
+        if not isinstance(strRange, str):
+            return None
+
+        splitRange = strRange.split('-')
+        return (int(splitRange[0]), int(splitRange[1]))
 
 
