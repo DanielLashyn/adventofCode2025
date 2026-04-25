@@ -136,7 +136,34 @@ class rangeList():
         return True
 
     def display(self):
-        print(self.binaryList)
+
+        for curRange in self.binaryList:
+            print(str(curRange[0]) +"-"+ str(curRange[1]))
+
+        if self.verifyOrder():
+            print("List is ordered")
+
+        else:
+            print("List is unordered")
+    def verifyOrder(self):
+
+        lowestValue = self.binaryList[0][0] - 1
+
+
+        for curRange in self.binaryList:
+            # Checks that the lowest value is not greater then the min of current range    
+            if(lowestValue > curRange[0]):
+                return False
+            
+            # Checks that the min is not greater then the max of the current range
+            if(curRange[0] > curRange[1]):
+                return False
+
+            # Sets the lowest value to the max of the range
+            lowestValue = curRange[1]
+
+        return True
+
 
     def convertStringToRange(self, strRange):
         
@@ -152,10 +179,6 @@ class rangeList():
     def combineRanges(self, range1, range2):
 
         if not self._validRange(range1) or not self._validRange(range2):
-            print(range1)
-            print(range2)
-
-            #exit()
             return None
 
         minRange = min(range1[0], range1[1], range2[0], range2[1])

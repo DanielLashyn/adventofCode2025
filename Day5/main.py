@@ -26,7 +26,8 @@ class Day5(DayTemplate):
                 continue
 
             if (isIngredient):
-                print("Ingredient: "+ str(item))
+                test = ""
+                #print("Ingredient: "+ str(item))
 
             else:
                 ingredientIDRanges.addRange(item)
