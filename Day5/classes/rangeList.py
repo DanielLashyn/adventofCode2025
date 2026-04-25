@@ -66,18 +66,10 @@ class rangeList():
         insertIndex = startIndex
         self._insertRange(startIndex, newRange)
 
-        # Checks if able to merge (existing range) (new Range)
-        if self._validIndex(insertIndex -1):
-            #print(str(self.getMaxAtIndex(insertIndex - 1)) + " " + str(self.getMinAtIndex(insertIndex)))
-            if self.getMaxAtIndex(insertIndex -1)  + 1 >= self.getMinAtIndex(insertIndex):
-                mergedRange = (self.getMinAtIndex(insertIndex - 1), self.getMaxAtIndex(insertIndex))
-                print(mergedRange)
-                self._popRange(insertIndex)
-                self._insertRange(insertIndex, mergedRange)
-                self._popRange(insertIndex - 1)
+        while self._checkAndMergeIndex(insertIndex):
+            continue
 
 
-    # Checks that the passed index is valid within the list of ranges
     def _validIndex(self, index):
             
         # Special condition for empty list
@@ -154,4 +146,45 @@ class rangeList():
         splitRange = strRange.split('-')
         return (int(splitRange[0]), int(splitRange[1]))
 
+    # Combine two ranges togather to make one range
+    def combineRanges(self, range1, range2):
 
+        if not self._validRange(range1) or not self._validRange(range2):
+            return None
+
+        minRange = min(range1[0], range1[1], range2[0], range2[1])
+        maxRange = max(range1[0], range1[1], range2[0], range2[1])
+
+        return (minRange, maxRange)
+
+
+    def _checkAndMergeIndex(self, insertIndex):
+
+        didMerge = False
+        # Checks if able to merge with range below (insertIndex - 1) (insertIndex)
+        if self._validIndex(insertIndex -1):
+            if self.getMaxAtIndex(insertIndex -1)  + 1 >= self.getMinAtIndex(insertIndex):
+                mergedRange = self.combineRanges(
+                                self.getRangeAtIndex(insertIndex - 1), 
+                                self.getRangeAtIndex(insertIndex))
+
+                self._popRange(insertIndex)
+                self._insertRange(insertIndex, mergedRange)
+                self._popRange(insertIndex - 1)
+                didMerge = True
+
+        # Checks if able to merge with range above (insertIndex) (insertIndex + 1)
+        if self._validIndex(insertIndex + 1):
+           if self.getMinAtIndex(insertIndex + 1) <= self.getMaxAtIndex(insertIndex):
+                
+                mergedRange = self.combineRanges(
+                                self.getRangeAtIndex(insertIndex + 1), 
+                                self.getRangeAtIndex(insertIndex))
+
+                self._popRange(insertIndex + 1)
+                self._popRange(insertIndex)
+                self._insertRange(insertIndex, mergedRange)
+                didMerge = True
+
+        return didMerge
+ 
