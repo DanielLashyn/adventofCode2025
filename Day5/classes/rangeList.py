@@ -144,12 +144,18 @@ class rangeList():
             return None
 
         splitRange = strRange.split('-')
+
+        
         return (int(splitRange[0]), int(splitRange[1]))
 
     # Combine two ranges togather to make one range
     def combineRanges(self, range1, range2):
 
         if not self._validRange(range1) or not self._validRange(range2):
+            print(range1)
+            print(range2)
+
+            #exit()
             return None
 
         minRange = min(range1[0], range1[1], range2[0], range2[1])
@@ -167,24 +173,24 @@ class rangeList():
                 mergedRange = self.combineRanges(
                                 self.getRangeAtIndex(insertIndex - 1), 
                                 self.getRangeAtIndex(insertIndex))
+                if mergedRange != None:
 
-                self._popRange(insertIndex)
-                self._insertRange(insertIndex, mergedRange)
-                self._popRange(insertIndex - 1)
-                didMerge = True
+                    self._popRange(insertIndex)
+                    self._insertRange(insertIndex, mergedRange)
+                    self._popRange(insertIndex - 1)
+                    didMerge = True
 
         # Checks if able to merge with range above (insertIndex) (insertIndex + 1)
         if self._validIndex(insertIndex + 1):
-           if self.getMinAtIndex(insertIndex + 1) <= self.getMaxAtIndex(insertIndex):
-                
+           if self.getMinAtIndex(insertIndex + 1) <= self.getMaxAtIndex(insertIndex):                
                 mergedRange = self.combineRanges(
                                 self.getRangeAtIndex(insertIndex + 1), 
                                 self.getRangeAtIndex(insertIndex))
-
-                self._popRange(insertIndex + 1)
-                self._popRange(insertIndex)
-                self._insertRange(insertIndex, mergedRange)
-                didMerge = True
+                if mergedRange != None:
+                    self._popRange(insertIndex + 1)
+                    self._popRange(insertIndex)
+                    self._insertRange(insertIndex, mergedRange)
+                    didMerge = True
 
         return didMerge
  
