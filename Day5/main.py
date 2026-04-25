@@ -42,5 +42,6 @@ class Day5(DayTemplate):
         # - Add the Data to the ingredientIDRanges
         # - Loop through checking how many IDs are valid
 
+        self.result = ingredientIDRanges.countTotalRanges()
         self.displayResult()
 

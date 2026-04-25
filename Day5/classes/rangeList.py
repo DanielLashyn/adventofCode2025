@@ -166,6 +166,19 @@ class rangeList():
 
         return True
 
+    def countTotalRanges(self):
+        
+        if self.isEmpty():
+            return 0
+        
+        totalRanges = 0
+
+        for curRange in self.binaryList:
+            totalRanges += curRange[1] - curRange[0] + 1
+            
+
+        return totalRanges
+
 
     def convertStringToRange(self, strRange):
         
@@ -232,4 +245,3 @@ class rangeList():
                 return False
 
             # Sets the lowest value to the max of the range
-    
