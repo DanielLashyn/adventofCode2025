@@ -56,15 +56,25 @@ class rangeList():
             mid = (endIndex + startIndex) // 2
 
             if self.getMaxAtIndex(mid) < newRange[0]:
-                print(str(self.getMaxAtIndex(mid)) + " < " + str(newRange[0]))
+                #print(str(self.getMaxAtIndex(mid)) + " < " + str(newRange[0]))
                 startIndex = mid + 1
             else:
-                print(str(self.getMaxAtIndex(mid)) + " > " + str(newRange[0]))
+                #print(str(self.getMaxAtIndex(mid)) + " > " + str(newRange[0]))
                 
                 endIndex = mid - 1
-        
-        print(startIndex)
+
+        insertIndex = startIndex
         self._insertRange(startIndex, newRange)
+
+        # Checks if able to merge (existing range) (new Range)
+        if self._validIndex(insertIndex -1):
+            #print(str(self.getMaxAtIndex(insertIndex - 1)) + " " + str(self.getMinAtIndex(insertIndex)))
+            if self.getMaxAtIndex(insertIndex -1)  + 1 >= self.getMinAtIndex(insertIndex):
+                mergedRange = (self.getMinAtIndex(insertIndex - 1), self.getMaxAtIndex(insertIndex))
+                print(mergedRange)
+                self._popRange(insertIndex)
+                self._insertRange(insertIndex, mergedRange)
+                self._popRange(insertIndex - 1)
 
 
     # Checks that the passed index is valid within the list of ranges
