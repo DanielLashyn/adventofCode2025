@@ -17,11 +17,15 @@ class Day6(DayTemplate):
     def run(self):
         super().run()
 
-        equations = []
+        #equations = []
         currentLine = 0
 
 
-        test = equationList()
+        equations = equationList()
+        equations.initData(self.getData())
+        equations.display()
+        
+        
         # Loops through all the data
         """for line in self.getData():
             currentLine += 1

@@ -40,7 +40,12 @@ class equation():
 
     def append(self, value):
 
-        self.appendNumber(int(value))
+
+        try:
+            intValue = int(value)
+            return self.appendNumber(intValue)
+        except ValueError:
+            return self.setOperator(value)
 
     # appended a new number to the end of the equation
     def appendNumber(self, value):

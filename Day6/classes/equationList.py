@@ -67,6 +67,27 @@ class equationList():
         return False
 
 
+    def initData(self, data):
+
+        currentLine = 0
+        
+        for line in data:
+            currentLine += 1
+            count = -1
+
+            line = line.split()
+            print(line)
+    
+            for item in line:
+                count += 1
+                if currentLine == 1:
+                    temp = equation()
+                    temp.append(item)
+                    self.equations.append(temp)
+                else:
+                    self.equations[count].append(item)
+
+        
     # Gets the result of all the equations
     def getResult(self):
 
@@ -80,4 +101,7 @@ class equationList():
         return result
 
     def display(self):
-        print(self.equations)
+
+        for equation in self.equations:
+            print(equation.display())
+        #print(self.equations)
