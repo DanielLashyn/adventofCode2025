@@ -1,4 +1,5 @@
 from globalCode.headerAll import *
+from .classes.equation import *
 
 class Day6(DayTemplate):
 
@@ -15,7 +16,11 @@ class Day6(DayTemplate):
     def run(self):
         super().run()
 
-        print(self.getData())
+        for line in self.getData():
+            line = line.split()
+            print(line)
+
+
         self.result = 0
 
 
