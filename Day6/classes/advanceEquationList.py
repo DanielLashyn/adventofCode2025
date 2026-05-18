@@ -37,6 +37,7 @@ class advanceEquationList(equationList):
         # Sets the operator for the equations
         operators = data[-1].split()
         operatorLength = len(operators)
+
         for operator in operators:
             operatorLength -= 1
             self.equations[operatorLength].setOperator(operator)
