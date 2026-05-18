@@ -70,15 +70,19 @@ class equationList():
     def initData(self, data):
 
         currentLine = 0
-        
+
+        # Loops through each line of the data
         for line in data:
             currentLine += 1
             count = -1
 
+            # Removes the white space in the data
             line = line.split()
     
+            # Loops through each index in the data ie['213', '542', '256']
             for item in line:
                 count += 1
+                # If first set of data then create an equation class to store them in 
                 if currentLine == 1:
                     temp = equation()
                     temp.append(item)
