@@ -6,7 +6,7 @@ class equationList():
         self.equations = []
 
     # Gets the number of equation
-    def getNumberOfEquations(self):
+    def getLength(self):
         return len(self.equations)
 
     # Gets the equation at a selected index
@@ -76,7 +76,6 @@ class equationList():
             count = -1
 
             line = line.split()
-            print(line)
     
             for item in line:
                 count += 1
@@ -96,12 +95,12 @@ class equationList():
             return 0
 
         result = 0
-        print("NEED to Finish")
+        for equation in self.equations:
+            result = result + equation.getResult()
 
         return result
 
     def display(self):
-
+        
         for equation in self.equations:
-            print(equation.display())
-        #print(self.equations)
+            equation.display()

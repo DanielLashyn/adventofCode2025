@@ -122,6 +122,22 @@ class equation():
         return result
 
     def display(self):
-        print(self.numbers)
-        print(self.getOperator())
-        print(self.getResult())
+        
+        # checks there is an equation
+        if self.isEmpty():
+            print("No Numbers given for the equation")
+            return
+
+        if self.getOperator() == "":
+            print("No Operator given for the equation")
+            return
+
+        # Gets the result
+        displayStr = str(self.getResult()) + " = "
+
+        # Creates the equation
+        for number in self.numbers:
+            displayStr = displayStr + str(number) + " " + str(self.getOperator()) + " "
+        displayStr = displayStr[:-3] 
+        print(displayStr)
+
