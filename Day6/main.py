@@ -19,7 +19,6 @@ class Day6(DayTemplate):
         super().run()
 
         equations = advanceEquationList() if self.difficulty == Diff.ADVANCE else equatoinList()
-        #equations = equationList()
         equations.initData(self.getData())
         self.result = equations.getResult()
         self.displayResult()
