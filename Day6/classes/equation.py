@@ -15,11 +15,28 @@ def equation():
         if self.isEmpty():
             return -1
         # Checks that the index given was valid
-        if not self.validIndex():
+        if not self._validIndex(index):
             return -1
 
         # Returns the number at the index
         return self.numbers[index]
+    
+    # Method to check that the given index is valid
+    def _validIndex(self, index):
+            
+        # Special condition for empty list
+        if self.isEmpty():
+            return False
+
+        # checks that the index is not greater then the length
+        if self.getLength() < index:
+            return False
+
+        # Checks that index is not less then 0
+        if index < 0:
+            return False
+        
+        return True
 
     # appended a new number to the end of the equation
     def append(self, value):
