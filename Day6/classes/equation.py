@@ -3,10 +3,10 @@ class equation():
     def __init__(self):
         self.numbers = []
         self.operator = ""
-        print("init")
+
     # Gets the number of numbers in the equation
     def getLength(self):
-        return len(numbers)
+        return len(self.numbers)
 
     # Gets the number at a selected index
     def getNumAtIndex(self, index):
@@ -38,8 +38,12 @@ class equation():
         
         return True
 
-    # appended a new number to the end of the equation
     def append(self, value):
+
+        self.appendNumber(int(value))
+
+    # appended a new number to the end of the equation
+    def appendNumber(self, value):
 
         if not isinstance(value, int):
             return False

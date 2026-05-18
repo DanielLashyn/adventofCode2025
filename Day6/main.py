@@ -1,5 +1,6 @@
 from globalCode.headerAll import *
 from .classes.equation import *
+from .classes.equationList import *
 
 class Day6(DayTemplate):
 
@@ -18,20 +19,24 @@ class Day6(DayTemplate):
 
         equations = []
         currentLine = 0
-        for line in self.getData():
+
+
+        test = equationList()
+        # Loops through all the data
+        """for line in self.getData():
             currentLine += 1
             line = line.split()
-
+            print(line)
+    
             for item in line:
-                print(item)
 
                 if currentLine == 1:
                     temp = equation()
                     temp.append(item)
                     equations.append(temp)
 
-        #print(equations[0].display())
-        
+        print(equations[0].display())
+        """
         self.result = 0
 
 
