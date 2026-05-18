@@ -1,6 +1,7 @@
 from globalCode.headerAll import *
 from .classes.equation import *
 from .classes.equationList import *
+from .classes.advanceEquationList import *
 
 class Day6(DayTemplate):
 
@@ -17,7 +18,8 @@ class Day6(DayTemplate):
     def run(self):
         super().run()
 
-        equations = equationList()
+        equations = advanceEquationList() if self.difficulty == Diff.ADVANCE else equatoinList()
+        #equations = equationList()
         equations.initData(self.getData())
         self.result = equations.getResult()
         self.displayResult()
