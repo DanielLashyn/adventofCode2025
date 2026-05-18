@@ -16,11 +16,22 @@ class Day6(DayTemplate):
     def run(self):
         super().run()
 
+        equations = []
+        currentLine = 0
         for line in self.getData():
+            currentLine += 1
             line = line.split()
-            print(line)
 
+            for item in line:
+                print(item)
 
+                if currentLine == 1:
+                    temp = equation()
+                    temp.append(item)
+                    equations.append(temp)
+
+        #print(equations[0].display())
+        
         self.result = 0
 
 

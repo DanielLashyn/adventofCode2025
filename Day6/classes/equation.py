@@ -1,9 +1,9 @@
-def equation():
+class equation():
 
     def __init__(self):
         self.numbers = []
         self.operator = ""
-
+        print("init")
     # Gets the number of numbers in the equation
     def getLength(self):
         return len(numbers)
