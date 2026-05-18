@@ -19,12 +19,6 @@ class Day6(DayTemplate):
 
         equations = equationList()
         equations.initData(self.getData())
-        equations.display()
-        
-        
-        # Loops through all the data
         self.result = equations.getResult()
-
-
         self.displayResult()
 
