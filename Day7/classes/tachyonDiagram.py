@@ -5,7 +5,7 @@ class tachyonDiagram():
         self.diagram = [[]]
         self.locationS = (0,-1) # (x,y)
         self.allSplitters = [] # [(x1,y1), (x2,y2)....(xn, yn)]
-
+        self.splittersUsed = 0
 
     def getHeight(self):
         return len(self.diagram)
@@ -15,6 +15,11 @@ class tachyonDiagram():
 
     def countAllSplitters(self):
         return len(self.allSplitters)
+
+    def validStartingLocation(self):
+        if self.locationS == (0,-1):
+            return False
+        return True
 
     def setDiagram(self, inDiagram):
         tempDiagram = []
@@ -28,7 +33,7 @@ class tachyonDiagram():
         # checks that the Slocation is valid
         if Slocation == -1:
             print("Error: Given Diagram doesn't have a valid starting location!")
-            return 1
+            return False
        
         # Gets the length of the first row, to match against other rows 
         rowLength = len(inDiagram[0])
@@ -40,7 +45,7 @@ class tachyonDiagram():
 
             if len(row) != rowLength:
                 print("Error: Given Diagram doesn't have equal rows!")
-                return 2
+                return False
 
             # converts each row to a list
             for item in row:
@@ -60,6 +65,31 @@ class tachyonDiagram():
         self.diagram = tempDiagram
         self.locationS = (Slocation,0)
         self.allSplitters = splitters
+        return True
+
+    def setBeams(self):
+        splittersHit = 0
+
+        if not self.validStartingLocation():
+            return False
+
+        beamLocations = {self.locationS[0]}
+        for row in self.diagram:
+            beamsToRemove = []
+
+            for beam in beamLocations:
+
+                if (row[beam] == '.'):
+                    row[beam] = '|'
+                elif row[beam] == '^':
+                    beamsToRemove.append(beam)
+                    splittersHit += 1
+
+            for beam in beamsToRemove:
+                beamLocations.discard(beam)
+                beamLocations.update([beam - 1, beam + 1])
+        
+        self.splittersUsed = splittersHit
 
     def display(self):
 
@@ -68,4 +98,5 @@ class tachyonDiagram():
                 print(item, end="")
             print()
         print("Total Splitters: " + str(self.countAllSplitters()))
+        print("Total Splitters used: " + str(self.splittersUsed))
         print("Starting Location is: " + str(self.locationS))
