@@ -1,4 +1,5 @@
 from globalCode.headerAll import *
+from .classes.tachyonDiagram import *
 
 class Day7(DayTemplate):
 
@@ -15,6 +16,7 @@ class Day7(DayTemplate):
     def run(self):
         super().run()
 
+        test = tachyonDiagram()
         print(self.getData())
         self.result = 0
         self.displayResult()
