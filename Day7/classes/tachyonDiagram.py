@@ -20,6 +20,8 @@ class tachyonDiagram():
         if self.locationS == (0,-1):
             return False
         return True
+    def getSplittersUsed(self):
+        return self.splittersUsed
 
     def setDiagram(self, inDiagram):
         tempDiagram = []

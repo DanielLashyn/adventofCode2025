@@ -19,7 +19,6 @@ class Day7(DayTemplate):
         diagram = tachyonDiagram()
         diagram.setDiagram(self.getData())
         diagram.setBeams()
-        diagram.display()
-        self.result = 0
+        self.result = diagram.getSplittersUsed()
         self.displayResult()
 
