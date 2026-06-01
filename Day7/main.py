@@ -16,8 +16,9 @@ class Day7(DayTemplate):
     def run(self):
         super().run()
 
-        test = tachyonDiagram()
-        print(self.getData())
+        diagram = tachyonDiagram()
+        diagram.setDiagram(self.getData())
+        diagram.display()
         self.result = 0
         self.displayResult()
 
